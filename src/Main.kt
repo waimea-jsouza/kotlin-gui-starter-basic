@@ -53,7 +53,8 @@ class MainWindow : JFrame(), ActionListener {
         contentPane.preferredSize = Dimension(600, 350)
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         isResizable = false
-        layout = null
+        layout = null // Prevents the pack function to specify the location of components and makes the creator
+                      // give specific coordinates/ dimensions
 
         pack()
     }
@@ -62,14 +63,20 @@ class MainWindow : JFrame(), ActionListener {
      * Populate the UI with UI controls
      */
     private fun addControls() {
+        val defaultFont = Font(Font.SANS_SERIF, Font.PLAIN, 36)
+
         greetingLabel = JLabel("Hello, World!")
         greetingLabel.horizontalAlignment = SwingConstants.CENTER
         greetingLabel.bounds = Rectangle(50, 50, 500, 100)
+        greetingLabel.font = defaultFont
         add(greetingLabel)
 
         helloButton = JButton("Click Me!")
         helloButton.bounds = Rectangle(50,200,500,100)
+        helloButton.foreground = Color.YELLOW
+        helloButton.background = Color(0,33,66)
         helloButton.addActionListener(this)     // Handle any clicks
+        helloButton.font = defaultFont
         add(helloButton)
     }
 
